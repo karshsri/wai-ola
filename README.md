@@ -1,4 +1,8 @@
-# Wai Ola Restoration: website mockup
+# Wai Ola Restoration: website mockup (LIGHT THEME)
+
+> This folder is the **light theme** version. The dark original lives in `maui-portal`.
+> The whole theme is one file: `src/light.css` (loaded last in `src/main.jsx`). Delete that import to get the dark theme back,
+> or tweak the colour variables at the top of `light.css` (`--l-bg`, `--l-ink`, `--l-teal`, `--l-btn`).
 
 Multi-page React (Vite) mockup for a Maui water damage mitigation and restoration company.
 Hero with an interactive stage card, video background, scroll-driven homepage and 8 inner pages.
