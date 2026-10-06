@@ -4,6 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="theme-color" content="#04121f" />
+    <script>
+      (function () {
+        var t = 'dark';
+        try { t = localStorage.getItem('wo-theme') === 'light' ? 'light' : 'dark'; } catch (e) {}
+        document.documentElement.setAttribute('data-theme', t);
+        if (t === 'light') document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f5fafc');
+      })();
+    </script>
     <title>Wai Ola Restoration | 24/7 Water Mitigation &amp; Restoration in Maui, HI</title>
     <meta name="description" content="24/7 emergency water damage mitigation across Maui: extraction, structural drying, mold prevention and insurance-ready documentation. Call for a crew now." />
     <link rel="icon" href="/logo.svg" type="image/svg+xml" />

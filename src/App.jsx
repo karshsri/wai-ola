@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link, NavLink, Navigate, Outlet, Route, Routes, useLocation } from 'react-router-dom';
 import { LOGO, PHONE, PHONE_HREF, areas } from './data.js';
+import ThemeToggle from './ThemeToggle.jsx';
 import { Home, Services, Process, Projects, Areas, About, Faq, Emergency, Contact } from './pages.jsx';
 
 const NAV = [
@@ -89,6 +90,7 @@ function Layout() {
             ))}
           </nav>
           <div className="header-actions">
+            <ThemeToggle className="hide-sm" />
             <a className="hcall" href={PHONE_HREF}>
               <span className="hcall-ic"><PhoneIcon /></span>
               <span className="hcall-tx"><small>24/7 emergency</small><b>{PHONE}</b></span>
@@ -106,6 +108,7 @@ function Layout() {
       <div className={`sheet${menuOpen ? ' is-open' : ''}`} aria-hidden={!menuOpen} onClick={(e) => e.target === e.currentTarget && setMenuOpen(false)}>
         <div className="sheet-card" role="dialog" aria-label="Menu">
           <button className="sheet-close" type="button" onClick={() => setMenuOpen(false)}>Close</button>
+          <div className="sheet-theme"><span>Theme</span><ThemeToggle /></div>
           <a className="sheet-call" href={PHONE_HREF}>Call {PHONE}<small>Emergency line, 24/7</small></a>
           <nav className="sheet-nav" aria-label="Site pages">
             <NavLink to="/" end>Home</NavLink>

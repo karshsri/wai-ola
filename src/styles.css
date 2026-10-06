@@ -546,3 +546,25 @@ body:not(.intro-ready) .hero-copy>*,body:not(.intro-ready) .stage-panel{opacity:
 
 /* leftover offset from when the logo was a separate fixed element */
 .site-header .brand{padding-left:0}
+
+
+/* =================== THEME TOGGLE =================== */
+.theme-toggle{position:relative;flex:none;display:block;width:64px;height:34px;padding:0;border-radius:999px;border:1px solid rgba(255,255,255,.28);background:rgba(4,18,31,.45);color:#fff;cursor:pointer;backdrop-filter:blur(8px);transition:border-color .25s,background .35s,transform .25s}
+.theme-toggle:hover{border-color:#3ab8c6;transform:translateY(-1px)}
+.theme-toggle:focus-visible{outline:2px solid #3ab8c6;outline-offset:3px}
+.tt-track{position:absolute;inset:0;display:flex;align-items:center;justify-content:space-between;padding:0 9px;opacity:.55}
+.tt-knob{position:absolute;top:3px;left:3px;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;background:#3ab8c6;color:#04121f;box-shadow:0 4px 12px -3px rgba(58,184,198,.8);transition:transform .5s cubic-bezier(.22,1,.36,1),background .35s,color .35s}
+html[data-theme="light"] .theme-toggle{border-color:rgba(11,42,64,.28);background:rgba(255,255,255,.7);color:#0b2a40}
+html[data-theme="light"] .theme-toggle:hover{border-color:#0e9aab}
+html[data-theme="light"] .tt-knob{transform:translateX(30px);background:#0b8294;color:#fff;box-shadow:0 4px 12px -3px rgba(11,130,148,.7)}
+.sheet-theme{display:flex;align-items:center;justify-content:space-between;margin:8px 0 22px;padding:12px 4px;border-top:1px solid rgba(255,255,255,.1);border-bottom:1px solid rgba(255,255,255,.1);font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:#a9c0cc}
+html[data-theme="light"] .sheet-theme{border-color:rgba(11,42,64,.1);color:#5a7686}
+.sheet-theme .theme-toggle{color:#fff}
+html[data-theme="light"] .sheet-theme .theme-toggle{color:#0b2a40}
+@media(max-width:560px){.hide-sm{display:none}}
+/* cross-fade between themes */
+::view-transition-old(root),::view-transition-new(root){animation-duration:.45s}
+
+/* menu sheet: theme row sits below the Close button */
+.sheet-theme{clear:both;margin-top:60px}
+.sheet-theme + .sheet-call{margin-top:0}
