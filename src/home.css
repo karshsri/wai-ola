@@ -575,3 +575,49 @@
   .stat>span{font-size:.8rem}
   .creds{gap:8px 18px;font-size:.82rem}
 }
+
+
+/* =================== FORM + MAP SECTION (above footer) =================== */
+.contactsec{padding:72px 0 84px;position:relative}
+.csgrid{display:grid;grid-template-columns:1.05fr .95fr;gap:24px;margin-top:34px;align-items:stretch}
+.csform.panel{display:grid;grid-template-columns:1fr 1fr;gap:14px 14px;align-content:start;padding:32px}
+.csform .full{grid-column:1/-1}
+.csform label{display:grid;gap:7px;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:#a9c0cc}
+.csform .field{margin:0;text-transform:none;letter-spacing:0;font-weight:400;font-size:.95rem}
+.csform textarea.field{resize:vertical;min-height:110px}
+.csform select.field{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none' stroke='%238fa9b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M1 1.5l5 5 5-5'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:38px}
+.csform label.check{display:flex;align-items:center;gap:10px;text-transform:none;letter-spacing:0;font-weight:500;font-size:.9rem;color:#c5d9e2;cursor:pointer}
+.csform label.check input{width:18px;height:18px;accent-color:#3ab8c6;flex:none}
+.csform .btn{margin-top:4px}
+.csnote{margin:2px 0 0!important;font-size:.82rem;color:#8fa9b8}
+.csnote a{color:#3ab8c6;text-decoration:none;font-weight:600}
+.csthanks{grid-column:1/-1;display:grid;gap:12px;justify-items:start;padding:12px 0}
+.csthanks h3{font-size:1.8rem;margin:0}
+.csthanks p{margin:0;color:#8fa9b8;max-width:420px}
+.csok{display:grid;place-items:center;width:52px;height:52px;border-radius:50%;background:rgba(58,184,198,.18);color:#3ab8c6;border:1px solid rgba(58,184,198,.5)}
+
+.csmap{display:flex;flex-direction:column;gap:14px}
+.mapframe{position:relative;flex:1;min-height:380px;border-radius:8px;overflow:hidden;border:1px solid rgba(255,255,255,.12);background:#0b2236;box-shadow:0 30px 60px -36px rgba(0,0,0,.7)}
+.mapframe iframe{position:absolute;inset:0;width:100%;height:100%;border:0;filter:invert(.92) hue-rotate(180deg) saturate(.7) brightness(.92) contrast(.95)}
+.mapchip{position:absolute;left:14px;top:14px;display:inline-flex;align-items:center;gap:9px;padding:8px 13px;border-radius:4px;background:rgba(4,18,31,.78);backdrop-filter:blur(8px);border:1px solid rgba(169,219,226,.25);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:#a9dbe2;pointer-events:none}
+.mapchip i{width:7px;height:7px;border-radius:50%;background:#3ab8c6;animation:live 2s infinite}
+.maplink{position:absolute;right:14px;bottom:14px;padding:9px 14px;border-radius:4px;background:#3ab8c6;color:#04121f;text-decoration:none;font-size:.8rem;font-weight:700;letter-spacing:.03em;transition:background .25s,transform .25s}
+.maplink:hover{background:#5cc9d4;transform:translateY(-2px)}
+.csinfo{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.csinfo li{display:grid;gap:4px;padding:14px 16px;border:1px solid rgba(255,255,255,.1);border-radius:6px;background:rgba(255,255,255,.03)}
+.csinfo small{font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:#8fa9b8}
+.csinfo b,.csinfo a{font-weight:600;font-size:.92rem;color:#fff;text-decoration:none}
+.csinfo a:hover{color:#3ab8c6}
+
+@media(max-width:900px){
+  .contactsec{padding:48px 0 56px}
+  .csgrid{grid-template-columns:1fr}
+  .mapframe{min-height:300px}
+}
+@media(max-width:560px){
+  .csform.panel{grid-template-columns:1fr;padding:22px}
+  .csinfo{grid-template-columns:1fr}
+}
+
+/* section bottom colour matches the footer's wavy crest so the edge blends */
+.contactsec{background:linear-gradient(180deg,#04121f 0%,#071e33 100%)}

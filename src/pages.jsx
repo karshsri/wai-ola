@@ -441,35 +441,16 @@ export function Emergency() {
 
 /* ---------- CONTACT ---------- */
 export function Contact() {
-  const [sent, setSent] = useState(false);
   return (
     <Page title="Contact | Wai Ola Restoration" description="Request a crew or call our 24/7 emergency line for water damage on Maui.">
-      <PageHero title="Contact" sub="Call for emergencies, or send a request and a crew lead will call you back." />
+      <PageHero title="Contact" sub="Call for emergencies, or send a request below and a crew lead will call you back." />
       <section className="final">
-        <div className="wrap finalgrid">
+        <div className="wrap">
           <div className="rv">
             <div className="eyebrow">24/7 emergency dispatch</div>
             <a className="bigcall" href={PHONE_HREF}>{PHONE}</a>
             <p className="sub">Staffed around the clock, every day of the year.</p>
           </div>
-          <form className="panel rv" onSubmit={(e) => { e.preventDefault(); setSent(true); }}>
-            {sent ? (
-              <div className="thanks"><h3>Request received.</h3><p>A crew lead will call you back. (Mockup form: nothing was sent.)</p></div>
-            ) : (
-              <>
-                <h3>Service request</h3>
-                <p>We will call you back right away.</p>
-                <input className="field" placeholder="Name" aria-label="Name" required />
-                <input className="field" placeholder="Phone number" aria-label="Phone" type="tel" required />
-                <select className="field" aria-label="Area" defaultValue="">
-                  <option value="" disabled>Service area</option>
-                  {areaOptions.map((a) => <option key={a}>{a}</option>)}
-                </select>
-                <textarea className="field" rows="3" placeholder="Describe the loss (optional)" aria-label="Details" />
-                <button className="btn p" type="submit">Submit request</button>
-              </>
-            )}
-          </form>
         </div>
       </section>
     </Page>

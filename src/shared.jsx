@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { PHONE, PHONE_HREF, LOGO, areas, services } from './data.js';
+import { areaOptions } from './mock.js';
 
 const ICONS = {
   drop: 'M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z',
@@ -108,6 +109,72 @@ export function CtaBand({ title = 'Need help right now?', text = 'Our emergency 
   );
 }
 
+
+const LOSS_TYPES = ['Burst or leaking pipe', 'Flooding or storm intrusion', 'Appliance or AC leak', 'Sewage backup', 'Mold or odor', 'Commercial property loss', 'Something else'];
+const MAP_SRC = 'https://www.google.com/maps?ll=20.80,-156.33&z=9&output=embed';
+const MAP_LINK = 'https://www.google.com/maps/search/?api=1&query=Maui,+Hawaii';
+
+// request form + map, shown above the footer on every page
+export function ContactSection() {
+  const [sent, setSent] = useState(false);
+  return (
+    <section className="contactsec" id="request">
+      <div className="wrap">
+        <Heading eyebrow="Get in touch" sub="Tell us what happened. A crew lead calls you back, usually within minutes, any hour of the day.">
+          Request a crew.
+        </Heading>
+        <div className="csgrid">
+          <form className="panel csform rv" onSubmit={(e) => { e.preventDefault(); setSent(true); }}>
+            {sent ? (
+              <div className="csthanks">
+                <span className="csok" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12.5l4.5 4.5L19 7" /></svg></span>
+                <h3>Request received.</h3>
+                <p>A crew lead will call you back shortly. For anything urgent, call {PHONE}. (Mockup form: nothing was sent.)</p>
+                <button type="button" className="btn g" onClick={() => setSent(false)}>Send another request</button>
+              </div>
+            ) : (
+              <>
+                <label>Name<input className="field" name="name" autoComplete="name" placeholder="Your name" required /></label>
+                <label>Phone<input className="field" name="phone" type="tel" autoComplete="tel" placeholder="(808) 000-0000" required /></label>
+                <label className="full">Email<input className="field" name="email" type="email" autoComplete="email" placeholder="you@example.com" /></label>
+                <label>Service area
+                  <select className="field" name="area" defaultValue="" required>
+                    <option value="" disabled>Select area</option>
+                    {areaOptions.map((a) => <option key={a}>{a}</option>)}
+                  </select>
+                </label>
+                <label>Type of loss
+                  <select className="field" name="loss" defaultValue="">
+                    <option value="" disabled>Select type</option>
+                    {LOSS_TYPES.map((t) => <option key={t}>{t}</option>)}
+                  </select>
+                </label>
+                <label className="full">What happened?<textarea className="field" name="message" rows="4" placeholder="Tell us briefly: where, when, and whether water is still flowing" /></label>
+                <label className="check full"><input type="checkbox" name="urgent" /><span>Water is still flowing or this is an emergency</span></label>
+                <button className="btn p full" type="submit">Request a crew</button>
+                <p className="csnote full">Prefer to talk? Call <a href={PHONE_HREF}>{PHONE}</a>, 24/7.</p>
+              </>
+            )}
+          </form>
+
+          <div className="csmap rv">
+            <div className="mapframe">
+              <iframe title="Map of Maui, Hawaii: our service area" src={MAP_SRC} loading="lazy" referrerPolicy="no-referrer-when-downgrade" allowFullScreen />
+              <span className="mapchip"><i />Serving all of Maui</span>
+              <a className="maplink" href={MAP_LINK} target="_blank" rel="noopener noreferrer">Open in Maps ↗</a>
+            </div>
+            <ul className="csinfo">
+              <li><small>Emergency line</small><a href={PHONE_HREF}>{PHONE}</a></li>
+              <li><small>Hours</small><b>24 hours, 7 days</b></li>
+              <li><small>Coverage</small><b>Kihei to Hana</b></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export function Page({ title, description, children }) {
   useEffect(() => {
     document.title = title;
@@ -157,6 +224,7 @@ export function Page({ title, description, children }) {
   return (
     <div className="home">
       {children}
+      <ContactSection />
       <footer className="sitefoot">
         <div className="footcrest" aria-hidden="true">
           <svg className="fc fc3" viewBox="0 0 2880 80" preserveAspectRatio="none"><path d="M0 0 H2880 V44 C2640 80 2400 8 2160 44 C1920 80 1680 8 1440 44 C1200 80 960 8 720 44 C480 80 240 8 0 44 Z" /></svg>
